@@ -1,0 +1,63 @@
+<%- include('../layout/includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/cart.css">
+</head>
+<body>
+    <%- include('../layout/includes/navigation.ejs') %>
+    <main>
+        <% if (productsCart.length > 0) { %>
+        <section class="Cart_Products Container">
+            <% for(let item of productsCart) {%>
+            <article class="ItemCart_Product">
+                <div class="Item_one">
+                    <img class="Product_Image" src="/<%= item.imageUrl %>" alt="">
+                    <div class="Product_Information">
+                        <h3><%= item.title %></h3>
+                        <p><%= item.description %></p>
+                        <form action="/delete-cart_Item" method="post">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button>Delete</button>
+                            <input type="hidden" name="productCartId" value="<%= item._id %>">
+                            <input type="hidden" name="productCartqte" value="<%= item.quantity %>"> 
+                        </form>
+                    </div>
+                    <div class="Pri_Quantity">
+                        <h4>Quantity : <%= item.quantity %></h4> 
+                        <p>Price : $<%= item.price%></p>
+                    </div>
+                </div>
+            </article>
+            <% } %>
+        </section>
+        <% }else{ %>
+            <h2 class="NOT_FOUND">No Products In Your Cart... </h2>
+            <% } %>
+        <section class="Order_Summary Container">
+            <article class="Order_Price ">
+                <h2>Order summary</h2>
+                <div class="Total_Price">
+                    <p>Original price </p>
+                    <p>$<% if (TotalPrice > 0) { %> <%= TotalPrice %> <% }else{  %>0<%  }  %></p>
+                </div>
+                <div class="Total_Price_th">
+                    <p>Total price </p>
+                    <p class="Somme_Price">$<% if (TotalPrice > 0) { %> <%= TotalPrice %> <% }else{  %>0<%  }  %></p>
+                </div>
+                <button class="btn">
+                    Proceed to Checkout 
+                </button>
+                <div class="more_Shop">
+                    <a href="/Products">
+                        Continue Shopping
+                    </a>
+                </div>
+            </article>
+            <article class="Code_copon Container">
+                <h2> Do you have a copon or gift cart</h2>
+                <p><input type="text" placeholder="Enter code here"></p>
+                <button class="btn">
+                    Apply Code
+                </button>
+            </article>
+        </section>
+    </main>
+<%- include('../layout/includes/end.ejs') %> 

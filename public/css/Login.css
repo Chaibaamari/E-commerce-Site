@@ -1,0 +1,41 @@
+
+:root{
+    --color-green--800 : #0c2320;
+    --color-green--700 : #1b5049;
+    --color-green--600 : #0D7C66;
+    --color-White--100 : #DDDDDD;
+    --color-White--200 : #cecccc;
+    --color-gray--100 : #888787;
+    --color-blue--100 : #0f1a2a;
+    --color-red--600 : #A0153E;
+}
+
+.Login-form {
+    padding: 3rem;
+    width: 25rem;
+    max-width: 90%;
+    margin: auto;
+    display: block;
+    background-color: white;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border: 1px solid var(--color-blue--100);
+}
+
+#email{
+    padding: .3rem;
+}
+#Password{
+    padding: .3rem;
+}
+.errorMessage{
+    padding: .4rem;
+    background-color: rgb(247, 184, 184);
+    border:1px solid rgb(241, 61, 61);
+    width: 30rem;
+    margin: 1rem auto;
+    text-align: center;
+}
